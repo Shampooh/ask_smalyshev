@@ -1,0 +1,19 @@
+<div class="row answer">
+	<div class="col-md-3">
+		<img src="/uploads/{{answer.answerer.avatar}}" alt="..." class="UserAvatar img-circle">
+	</div>
+	<div class="col-md-9">
+		<p>
+			<h5><b>Answer id:</b> {{answer.id}}</h5>
+			<h5><b>User:</b> {{answer.answerer.nick}}</h5>
+			{{answer.text}}
+		</p>
+		<div>
+			{% if answer.correct %}
+				Correct answer
+			{% elif user == question.asking %}
+				<input type="radio" name="correct" data-aid="{{answer.pk}}" data-qid="{{question.pk}}" value="correct" class="correct"> correct
+			{% endif %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<p class="navbar-text navbar-right" id="nav-user">
+	<a href= "{% url 'personal_page' %}""><img id="nav-avatar" alt="avatar" src="/uploads/{{user.avatar}}" alt="..." class="smallUserAvatar img-circle"></a>
+	<span id="nick"><b>{{user.nick}}</b></span>
+	<a href="{% url 'logout' %}" id="logout">LogOut</a>
+</p>

@@ -1,0 +1,28 @@
+<div class="col-md-3">
+	<img src="/uploads/{{question.asking.avatar}}" alt="..." class="UserAvatar img-circle">
+	<div>
+		<a href="#" class="js-vote" data-qid="{{question.pk}}" data-vote="inc">
+		<span class="like glyphicon glyphicon-thumbs-up"></span>
+		</a>
+		<span class="count"> {{question.ratin}} </span>
+		<a href="#" class="js-vote" data-qid="{{question.pk}}" data-vote="dec">
+			<span class="dislike glyphicon glyphicon-thumbs-down"></span>
+		</a>
+	</div>
+</div>
+<div class="col-md-9">
+	<p>
+	<h4><a href= "{% url 'question' question.id%}"><b>Title:</b> {{question.title}}</a></h4>
+	<h5><b>Question id:</b> {{question.id}}</h5>
+	<h5><b>User:</b> {{question.asking.nick}}</h5>
+	{{question.text}}
+	</p>
+	<div>
+		<span>Answers: {{question.answers_count}}</span>
+		<span>
+		{% for tag in question.tags.all %}
+			<a href="{% url 'tag' %}?tag={{tag.text}}" class="badge">{{tag.text}}</a>
+		{% endfor %}
+		</span>
+	</div>
+</div>

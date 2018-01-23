@@ -1,0 +1,11 @@
+{% extends "./base.html" %}
+{% block content %}
+	{% block tag %}
+	{% endblock %}
+	{% for question in questions %}
+		{% include "./ask.html" %}
+	{% endfor %}
+	{% block pagination %}
+		{% include "./pagination.html" %}
+	{% endblock %}
+{% endblock %}
