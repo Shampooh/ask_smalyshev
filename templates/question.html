@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+{% block content %}
+	{% include "./ask.html" %}
+	<hr>
+	{% for answer in answers %}
+		{% include "./answer.html" %}
+	{% endfor %}
+	{% include "./pagination.html" %}
+	<hr>
+	<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+		<div class="row">
+			<label for="example-text-input" class="col-md-3 col-form-label signup-filds">{{form.text.label}}</label>
+			{{form.text}}
+		</div>
+		<div class="row">
+			<button type="submit" class="btn btn-success" id="new_question">send</button>
+		</div>
+	</form>
+	 <script type="text/javascript" language="javascript" charset="utf-8">
+	console.log({{chanal}});
+    var socket = new WebSocket('ws://localhost:8888/listen/{{chanal}}');
+    socket.onopen = function(event) {
+        console.log('ws opened');
+        var data = JSON.stringify({ message: "Hello WebSocket" });
+        socket.send(data);
+    };
+    socket.onmessage = function(event) {
+        var resp = JSON.parse(event.data);
+        console.log('ws message', resp.msg);
+        alert(resp.msg);
+    };
+    socket.onclose = function(event) {
+        console.log('ws closed')
+    };
+    </script>
+{% endblock %}

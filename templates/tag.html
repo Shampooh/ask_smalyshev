@@ -1,0 +1,12 @@
+<h3>Best users</h3>
+<ul class="taglist">
+	{% for user in topUsers %}
+	<li><a href= "{% url 'personal_page' %}">{{user.username}}</a></li>
+	{% endfor %}
+</ul>
+<h3>Best tags</h3>
+<ul class="taglist">
+	{% for tag in topTags %}
+	<li><a href= "{% url 'tag' %}?tag={{tag.text}}">{{tag.text}}</a></li>
+	{% endfor %}
+</ul>
